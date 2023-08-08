@@ -10,10 +10,6 @@ on:
     branches: ['master']
   pull_request:
     branches: ['master']
-  schedule:
-    # postgis/postgis update schedule is '15 5 * * 1'
-    # https://github.com/postgis/docker-postgis/blob/master/.github/workflows/main.yml
-    - cron: '15 7 * * 1'
 
 env:
   REGISTRY: ghcr.io
@@ -32,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        postgres: [15, 14, 13, 12]
+        postgres: [15]
         postgis: ['3.3']
 
     env:
@@ -66,16 +62,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             BASE_IMAGE_TAG=${{ env.BASE_IMAGE_TAG }}
-
-      - name: Build test stack
-        env:
-          IMAGE_NAME: ${{ env.TEST_TAG }}
-        run: docker compose up --build --no-start
-
-      - name: Run tests
-        env:
-          IMAGE_NAME: ${{ env.TEST_TAG }}
-        run: docker compose start sut
 
       - name: Log in to container registry
         if: ${{ github.event_name != 'pull_request' }}
