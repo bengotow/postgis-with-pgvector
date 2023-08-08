@@ -20,3 +20,6 @@ For more detailed instructions about how to start and control your Postgres cont
 
 - [postgis](https://github.com/postgis/postgis)
 - [pgvector](https://github.com/pgvector/pgvector)
+- [semver](https://github.com/theory/pg-semver)
+- [pg_similarity](https://github.com/eulerto/pg_similarity)
+- [unit](https://github.com/df7cb/postgresql-unit)

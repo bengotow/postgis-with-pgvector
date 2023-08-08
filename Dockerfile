@@ -50,7 +50,7 @@ RUN apt-get update && \
 		libaio1 \
 		postgresql-$PG_MAJOR-semver \
 		postgresql-$PG_MAJOR-similarity \
-		postgresql-$PG_MAJOR-unit \
+		postgresql-$PG_MAJOR-unit && \
 	apt-get purge -y --auto-remove && \
 	rm -rf /var/lib/apt/lists/*
 
